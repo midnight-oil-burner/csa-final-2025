@@ -1,2 +1,4 @@
 # csa-final-2025
-placeholder
+update this sometime
+
+a little study guide dedicated to the AP Computer Science A course.
