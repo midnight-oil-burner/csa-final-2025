@@ -2,5 +2,5 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-def index(response):
-    return HttpResponse("this is a TEST!!!!!!!!!!")
+def index(request):
+    return render(request, "siteapp/index.html")
