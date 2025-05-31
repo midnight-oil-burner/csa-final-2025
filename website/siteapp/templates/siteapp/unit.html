@@ -31,9 +31,10 @@
                 font-family: "segoe ui";
             }
             .codetable{
-                background-color: lightgray;
+                background-color: rgb(78, 78, 78);
                 margin: 2%;
                 width: 75%;
+                color: white;
             }
         </style>
         <body>
@@ -49,7 +50,9 @@
                 </table>
                 <h2>testing please remove</h2>
                 <p>testing please remove</p>
-                <table class="codetable"><tr><td><code>int x = 10</code></td></tr></table>
+                <table class="codetable"><tr><td><code>int x = 100</code></td></tr></table>
+                {% block content %}
+                {% endblock %}
             </div>
         </body>
     </head>
