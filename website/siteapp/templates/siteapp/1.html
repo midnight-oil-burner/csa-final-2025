@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 1
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+        </style>
+    </head>
+    <!-- <table><td><code class="codetable">    
+    <pre>
+    </pre></code></td></table>-->
+    <body>
+        <h1>
+            Unit 1: Primitive Types
+        </h1>
+        <h2>
+            1.1: Why Programming? Why Java?
+        </h2>
+        <p>
+            Java is what's called an Object Oriented Programming (OOP) language, which means it revolves around the creation and manipulation of said objects, but 
+            that all won't mean much until Unit 2 and onward.
+        </p>
+        <p>
+            A lot of your code will begin with a class definition and then a "main method," which is basically where Java looks at first before running any other code. 
+            It'll look something like this: </p>
+            <table><td><code class="codetable">    
+            <pre>
+    public class ClassName // class definition
+    {
+        public static void main(String[] args) // main method
+        {
+            // code goes here
+        }
+    }</pre></code></td></table>
+        <p>
+            (the '//' above indicates that anything after it is a comment--comments are ignored when code is run. '//' denotes a single-line comment and '/*' along with '*/' denote 
+            the start and end of a multiline comment, respectively.)
+        </p>
+        <p>
+            Note the curly brackets; every class and method begins and ends with them. Also note some of the words used; Java reserves words for certain purposes which can't
+            be used when naming. "class", "static", "public", and "void" are all keywords, which means naming a variable, method, or class one of those words leads to an error.
+            Also also note how the class name is capitalized; their names should be capitalized as such.
+        </p>
+        <p>
+            You may be wondering what a method is. Basically, a method is a block of code that does something when executed. The first method you'll learn are the print 
+            methods:
+        </p>
+            <table><td><code class="codetable">    
+            <pre>
+
+    System.out.print("text");
+    System.out.println("text");
+    </pre></code></td></table>
+        <p>
+            For the AP exam, you don't really need to understand what "System.out" in these methods are doing, you just need to understand what these two methods do.
+            However, if you're curious about coding, I encourage you to do some research on what's going on.
+        </p>
+        <p>
+            The former prints (outputs) whatever you put in the parentheses; the latter does the same but moves to the next line after printing.
+        </p>
+        <p>
+            Note a few other important things: most lines of code have to end with a semicolon ';', barring class and method declarations as well as a few other cases. 
+            You can put a lot of different things in between those parentheses; here I printed out a String, which we'll touch on next.
+        </p>
+        <h2>
+            1.2: Variables and Data Types
+        </h2>
+        <p>
+            A variable is a stored value that's associated with a memory location in your computer. There are two different types, primitive and reference variables. 
+            The latter encompasses all of the objects that you'll make, while the former are basic data types that anyone writing Java code can use. For the AP exam, you 
+            need to know three: int, double, and boolean.
+        </p>
+        <p>
+            ints store integer numbers, doubles store numbers with decimals (up to 16), booleans store true/false values. true and false are also keywords. They are 
+            declared as such:
+        </p>
+            <table><td><code class="codetable">    
+            <pre>
+    int number = 10;
+    double num = 5.5;
+    boolean isNumber = true;
+</pre></code></td></table>
+        <p>
+            The word following the type is the variable's name, or identifier. Using the same identifier more than once in variable declarations leads to an error. 
+            Though your variables can be named almost anything, you should probably name them something that allows anyone reading it to understand what it does (e.g., 
+            "counter" rather than "c.") Variables also begin lower case and use lowerCamelCase by convention. Names in general are case-sensitive, so keep that in mind.
+        </p>
+        <p>
+            The "final" keyword can be added before the type to create a variable whose value cannot be altered. final values' identifiers are ALL CAPS by convention.
+        </p>
+        <h2>
+            1.3: Expressions and Assignment Statements
+        </h2>
+        <p>
+            The equals sign "=" is used to assign whatever is on the right to the variable on the left.
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    int x = 1;
+    int y = x + 3; // y = 4
+    int z = x + y * 2; // z = 9
+</pre></code></td></table>
+        <p>
+            PEMDAS is still upheld in arithmetic; parantheses are computed first, then multiplication and division from left to right, the addition and subtraction from
+            left to right.
+        </p>
+        <p>
+            + indicates addition, - indicates subtraction, * indicates multiplication, / indicates division, and % indicates modulus. Any arithmetic expression that 
+            involves a double makes the result a double, while one with only ints will result in an int.
+        </p>
+        <h2>
+            1.4: Compound Assignment Operators
+        </h2>
+        <table><td><code class="codetable">    
+        <pre>
+    // a and b are both integers
+    a += b; // adds b to a
+    a -= b; // subtracts b from a
+    a *= b; // multiplies a by b
+    a /= b; // divides a by b 
+    a %= b; // sets a to the remainder of a / b 
+    a++; // adds 1 to a
+    a--; // subtracts 1 from a
+    boolean isEqual = a == b; // checks if a is equal to b
+    boolean isNotEqual = a != b; // checks if a is NOT equal to b
+</pre></code></td></table>
+        <p>
+            Division with ints is a bit weird; any remainder is ignored and the result is still an integer. Dividing by zero leads to an error. 
+        </p>
+        <h2>
+            1.5: Casting and Ranges of Variables
+        </h2>
+        <p>
+            Casting allows you to set one variable's type to that of another variable:
+        </p>
+            <table><td><code class="codetable">    
+            <pre>
+    // a is an int and b is a double
+    a = (int) b; // removes all digits after the decimal point
+    b = (double) a; // adds ".0" after a 
+    /* note that casting applies to whatever is directly in front of the cast.
+    double x = (double) (3/2); sets x to 1.0 by first evaluating 3/2 (which equals 1) then turning it into a double by adding ".0"
+    double y = ((double) 3) / 2; sets x to 1.5 by first turning 3 into 3.0 THEN dividing it by 2
+    */
+    </pre></code></td></table>
+        <p>
+            Integer.MIN_VALUE and Integer.MAX_VALUE are the respective minimum and maximum values an int can have. The former is -2^31 and the latter is (2^31)-1. Trying 
+            to go above the maximum (e.g., by adding 1) sends you to the minimum, and going below the minimum sends you to the maximum. This is called integer overflow.
+        </p>
+    </body>
+</html>

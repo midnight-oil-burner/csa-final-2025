@@ -1,0 +1,32 @@
+body{
+    background: rgba(50, 200, 150, 0.7);
+}
+table, td{
+    border: 1px, dashed, black;
+    width: 100%;
+    border-collapse: collapse;
+    padding-left: 2%;
+}
+h1{
+    text-align: left;
+    font-family: "segoe ui";
+    font-size: 30px;
+}
+h2{
+    text-align: left;
+    padding-left: 2%;
+    font-size: 25px;
+    font-family: "segoe ui";
+}
+p{
+    text-align: left;
+    padding-left: 2%;
+    font-size: 15px;
+    font-family: "segoe ui";
+}
+.codetable{
+    background-color: rgb(78, 78, 78);
+    margin: 2%;
+    width: 75%;
+    color: white;
+}
