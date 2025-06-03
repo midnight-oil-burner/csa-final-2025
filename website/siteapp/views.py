@@ -8,5 +8,5 @@ def unit(request, num):
     if num > 10 or num < 1:
         return HttpResponseNotFound("That unit doesn't exist.")
     return render(request, f"siteapp/{num}.html", {"pageNum":num}) #find a way to pass the descriptions stored in some array?
-def check(request):
-    return render(request, "siteapp/unit.css")
+# def check(request):
+    # return render(request, "siteapp/unit.css")
