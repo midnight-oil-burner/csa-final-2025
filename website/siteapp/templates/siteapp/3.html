@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 2
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <h1>
+            Unit 3: Boolean Expressions and if Statements
+        </h1>
+        <h2>
+            3.1: Boolean Expressions
+        </h2>
+        <p>
+            Certain expressions which help you with comparing values are used in writing Boolean statements:
+        </p>
+            <table><td><code class="codetable"><pre>
+    boolean one = a == b; // true if a is equal to b; don't use this on doubles
+    boolean two = a != b; // true if a is NOT equal to b
+    boolean three = a < b; // true if a is less than b 
+    boolean four = a > b; // true if a is greater than b 
+    boolean five = a <= b; // true if a is less than or equal to b
+    boolean six = a >= b; // true if a is greater than or equal to b</pre></code></td></table> 
+        <p>
+            An expression containing any of the above evaluates to a boolean.
+        </p>
+        <h2>
+            3.2: if Statements and Control Flow 
+        </h2>
+        <p>
+            if statements check whether or not a boolean expression is true, and executes a block of code if it is:
+        </p>
+        <table><td><code class="codetable"><pre>
+    if(booleanExpression)
+    {
+        // code here is run if booleanExpression is true
+    }</pre></code></td></table> 
+        <p>
+            if is a keyword, so don't name your variables "if." Note that the first line is akin to a method signature; there's no semicolon. Also much like a method, 
+            the evaluation of a boolean expression interrupts the execution of code. The code inside the scope of an if statement is passed over if the boolean is false. 
+            Also, if an if statement's contents is EXACTLY one line, you don't have to use curly brackets, though it's really easy for this to cause an error if you forget. 
+        </p>
+        <p>
+            A quirk with return statements inside the scope of an if is that you'll probably need multiple return statements, consider the following method:
+        </p>
+        <table><td><code class="codetable"><pre>
+    public static boolean isCool(String name) {
+        if(name.equals("Ms. Zhu"))
+            return true;
+    }
+    // the above results in a compilation error, as there is no return statement if the name isn't "Ms. Zhu."
+
+    public static boolean isCool(String name) {
+        if(name.equals("Ms. Zhu"))
+            return true;
+        return false;
+    }
+    // the above works perfectly fine (it also works if the additional line follows an else statement)
+
+    public static boolean isCool(String name) {
+        if(name.equals("Ms. Zhu"))
+            return true;
+        if(!name.equals("Ms. Zhu"))
+            return false;
+    }
+    // the above will not work.
+
+    // note that the above method can be simply reduced to "return name.equals("Ms. Zhu");" </pre></code></td></table> 
+        <h2>
+            3.3: if-else Statements
+        </h2>
+        <p>
+            else statements can be added after if statements. They represent code that will be run if the if statement's boolean happens to be false:
+        </p>
+        <table><td><code class="codetable"><pre>
+    public static boolean isCool(String name) {
+        if(name.equals("Ms. Zhu"))
+            return true;
+        else
+            return false;
+    } 
+    // works exactly the same as the previous method</pre></code></td></table>
+        <p>
+            One line bracket omission works the same as if statements. They are also not required in order for an if statement to compile, and each if statement can only 
+            have one associated else statement.
+        </p>
+        <h2>
+            3.4: else if Statements
+        </h2>
+        <p>
+            else if statements can be added after if statements to represent multiple boolean expressions. 
+        </p>
+        <table><td><code class="codetable"><pre>
+    public static boolean isCool(String name) {
+        if(name.equals("Ms. Zhu"))
+            return true;
+        else if(name.equals("Joe Cool"))
+            return true;
+        else 
+            return false;
+    } </pre></code></td></table>
+        <p>
+            As you can see, else-if expressions also require boolean expressions, and the one line bracket omission also applies. These are also optional in making an 
+            if statement compile, and there is no limit to the amount of else-ifs you can have per if statement.
+        </p>
+        <h2>
+            3.5: Compound Boolean Expressions
+        </h2>
+        <p>
+            Certain symbols can chain or boolean expressions together or alter them:
+        </p>
+        <table><td><code class="codetable"><pre>
+    Boolean hoo = a && b; // true if a and b are both true, false otherwise
+    Boolean joo = a || b; // true if either a or b are true, false if both are false
+    Boolean greg = !a; // true if a is false, false if a is true </pre></code></td></table>
+        <p>
+            && is evaulated before ||:
+        </p>
+        <table><td><code class="codetable"><pre>
+    Boolean foop = a && b || c && d;
+    // effectively means:
+    Boolean foop = (a && b) || (c && d); </pre></code></td></table>
+        <p>
+            As you'd expect, boolean expressions inside parentheses are executed first.
+        </p>
+        <p>
+            && and || use short circuit evaluation; Java doesn't check the second expression if it can tell by looking at the first expression whether the compound 
+            boolean will be true or false. E.g., in the above boolean hoo, if a is false, it doesn't check b as hoo will be false regardless.
+        </p>
+        <h2>
+            3.6: Equivalent Boolean Expressions
+        </h2>
+        <p>
+            DeMorgan's Laws can be applied to boolean expressions to find an equivalent boolean:
+        </p>
+        <table><td><code class="codetable"><pre>
+    !(a && b) is equivalent to !a || !b
+    !(a || b) is equivalent to !a && !b
+    !(!a) is equivalent to a
+
+    !(c == d) is equivalent to c != d
+    !(c != d) is equivalent to c == d
+    !(c < d) is equivalent to c >= d
+    !(c > d) is equivalent to c <= d
+    !(c <= d) is equivalent to c > d
+    !(c >= d) is equivalent to c < d</pre></code></td></table>
+        <p>
+            All that's being done is essentially the distribution of the !, like how you would distribute a number in math.
+        </p>
+        <h2>
+            3.7: Comparing Objects
+        </h2>
+        <p>
+            Again, you should almost always use an equals method instead of == to check if two objects are meaningfully equivalent. However, == lets you check if two 
+            object references are aliases--different names referring to the same object in memory:
+        </p>
+        <table><td><code class="codetable"><pre>
+    String str1 = new String("yo");
+    String str2 = str1; // str2 is now an alias for str1
+    System.out.println(str1); // prints "yo"
+    System.out.println(str2); // prints "yo"
+    System.out.println(str1 == str2); // prints "true," so they're aliases
+    System.out.println(str1.equals(str2)); // prints "true"
+    str1 = "test";
+    System.out.println(str1); // prints "test"
+    System.out.println(str2); // prints "yo"; Strings are immutable!</pre></code></td></table>
+        <p>
+            A common technique when debugging is using == to compare objects with null to see if they actually exist.
+        </p>
+    </body>
+</html>

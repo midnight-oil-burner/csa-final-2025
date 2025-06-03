@@ -20,6 +20,7 @@
                 text-align: left;
                 font-family: "segoe ui";
                 font-size: 30px;
+                padding-left: 1%;
             }
             h2{
                 text-align: left;
@@ -77,15 +78,21 @@
             Also also note how the class name is capitalized; their names should be capitalized as such.
         </p>
         <p>
-            You may be wondering what a method is. Basically, a method is a block of code that does something when executed. The first method you'll learn are the print 
+            You may be wondering what happens if you do name a variable a keyword. Doing so throws a compilation error. In Java, your code is compiled, i.e., converted 
+            into something your computer can understand. If you break some kind of syntax rule, like naming a variable "public," the compiler gets upset and doesn't run
+            any code, instead throwing a compilation error. There exists another type of error, a runtime error, which occurs after successful compilation and during 
+            execution of code. These can come from a variety of things, but are generally the result of trying to do something impossible or undefined, like dividing by 
+            zero or calling a method on null. Compilation errors and runtime errors are the two types of errors that Java has, and you'll probably deal with a lot of them.
+        </p>
+        <p>
+            You may also be wondering what a method is. Basically, a method is a block of code that does something when executed. The first method you'll learn are the print 
             methods:
         </p>
             <table><td><code class="codetable">    
             <pre>
-
     System.out.print("text");
     System.out.println("text");
-    </pre></code></td></table>
+</pre></code></td></table>
         <p>
             For the AP exam, you don't really need to understand what "System.out" in these methods are doing, you just need to understand what these two methods do.
             However, if you're curious about coding, I encourage you to do some research on what's going on.
@@ -176,8 +183,7 @@
     /* note that casting applies to whatever is directly in front of the cast.
     double x = (double) (3/2); sets x to 1.0 by first evaluating 3/2 (which equals 1) then turning it into a double by adding ".0"
     double y = ((double) 3) / 2; sets x to 1.5 by first turning 3 into 3.0 THEN dividing it by 2
-    */
-    </pre></code></td></table>
+    */ </pre></code></td></table>
         <p>
             Integer.MIN_VALUE and Integer.MAX_VALUE are the respective minimum and maximum values an int can have. The former is -2^31 and the latter is (2^31)-1. Trying 
             to go above the maximum (e.g., by adding 1) sends you to the minimum, and going below the minimum sends you to the maximum. This is called integer overflow.

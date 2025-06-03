@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 2
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+        <!--<table><td><code class="codetable">    
+    <pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <h1>
+            Unit 2
+        </h1>
+        <h2>
+            2.1: Objects: Instances of Classes
+        </h2>
+        <p>
+            A class is like a blueprint for creating objects, and objects are instances of classes. Objects are a reference type, which means that if they're passed
+            as an argument in a method a reference to that object is passed instead. Object types have the same name as the class they come from. Objects have defined 
+            instance variables, also known as attributes; the class they come from likely holds methods, or behaviors, that do something with those objects.
+        </p>
+        <p>
+            Methods are always followed by parantheses, which may or may not contain arguments which are passed into the method. They're generally called with a dot 
+            operator, which makes Java look in the class the object is from for the method following the dot.
+        </p>
+        <p>
+            Objects are created and methods are called as such:
+        </p>
+        <table><td><code class="codetable">    
+    <pre>
+    ClassName variableName = new ClassName(arguments);
+    variableName.methodName(arguments); </pre></code></td></table>
+        <h2>
+            2.2: Creating and Storing Objects (Instantiation)
+        </h2>
+        <p>
+            The constructor (or signature) of a class is what's used in creating the actual objects and assigning values to the instance variables. Constructors 
+            are public and have no data type. You can have more than one constructor in a class as long as they have different parameters; said constructor is said 
+            to be overloaded when this occurs.
+        </p>
+            <table><td><code class="codetable">    
+    <pre>
+    class Square
+    {
+        private int w; // private instance variable
+
+        public Square() // no argument constructor
+        {
+            w = 1;
+        }
+        public Square(int width) // "int width" is a formal parameter
+        {
+            w = width;
+        }
+        ...
+    }
+
+    ...
+    Square s = new Square(5); // sets w to 5; the 5 passed as an argument is the "actual parameter"
+    ...</pre></code></td></table>
+        <p>
+            As you can see, objects are created with the new keyword, and the arguments passed alter the instance variables accordingly. The no argument constructor 
+            takes no arguments and sets instance variables to a default value, in this case 1. Note that the order in which arguments are passed has to match the order 
+            of the formal parameters.
+        </p>
+        <p>
+            The null keyword indicates the lack of a value when assigned to a variable. Trying to call a method on null throws an error. 
+        </p>
+        <p>
+            "public" means that any user can access the associated method or variable, while "private" means that it can only be accessed from within the same class. 
+            This is an instance of encapsulation, where potentially sensitive data are hidden from users.
+        </p>
+        <h2>
+            2.3: Calling a Void Method
+        </h2>
+        <p>
+            An object's behavior tells us what the object can do and is defined by its methods. Non-static methods must be called on an object with the dot operator, and 
+            must be in the same class as the object. A method's signature consists of its name and the following parentheses which include the type and name of each 
+            parameter.
+        </p>
+        <p>
+            The calling of a method or constructor interrupts the execution of code; the method is executed first before moving on to code after the method call.
+        </p>
+        <p>
+            Void methods, like the one below, do not return any values. They are typically used to do something, in this case, printing information.
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    public void output()
+    {
+        System.out.println("test"); // prints "test"
+    }</pre></code></td></table>
+        <h2>
+            2.4: Calling a Void Method with Parameters
+        </h2>    
+        <p>
+            Methods can also be overloaded as constructors are. For example, the below method would overload the "output" method from above.
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    public void output(String input)
+    {
+        System.out.println(input); // prints input
+    }</pre></code></td></table>
+        <h2>
+            2.5: Calling a Non-void Method
+        </h2>
+        <p>
+            Non-void methods return a value of the type defined in the method header. To use this value, it has to be stored in a variable or used in an expression. 
+            A common example of these methods are getters, or accessors, which return the value of a private instance variable:
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    public int getWidth()
+    {
+        return w; // w being an int
+    }
+    ...
+    int squareWidth = squareName.getWidth(); // storing the value returned by a non-void method</pre></code></td></table>
+        <h2>
+            2.6: String Objects: Concatenation, Literals, and More
+        </h2>
+        <p>
+            Strings are literally strings of text. They are a reference type and are immutable, which means that the various String methods will not change the String 
+            it is called on. They can be declared as such:
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    String x = "john"; // via String literals
+    String y = new String("gregory"); // via String constructor </pre></code></td></table>
+        <p>
+            Strings can be concatenated (added to) by using + or +=. E.g.,
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    String output = "x" + "y";
+    output += "z";
+    System.out.println(output); // prints "xyz" </pre></code></td></table>
+        <p>
+            Primitive values can be concatenated to Strings:
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    String x = 1 + 2 + "x" + 3 + 4;
+    System.out.println(x); // prints "3x34"</pre></code></td></table>
+        <p>
+            Note how everything before the String is treated as ints, but everything after is treated as a String and concatenated. This can be circumvented by 
+            placing the "3 + 4" inside parentheses.
+        </p>
+        <p>
+            Escape sequences are special groups of characters beginning with \ that do different things when printing a String (in between quotation marks):
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    \" adds a double quote
+    \n adds a new line
+    \\ adds a backslash
+    \' adds a single quote
+    \t inserts spaces after a character until the length of everything before the \t combined with the spaces is a multiple of 8</pre></code></td></table>
+        <h2>
+            2.7: String Methods
+        </h2>
+        <p>
+            These come up a lot. Note that Strings start at index 0 and end at index str.length()-1. Strings have quite a few methods, but the most-know ones are as 
+            follows (and also found on the Reference Sheet):
+        </p>
+            <table><td><code class="codetable">    
+            <pre>
+    str.length() // returns the total length of String str
+    str.substring(int from, int to) // returns a String that represents the chars in Str from "from" (inclusive) to "to" (exclusive)
+    str.substring(int from) // reutrns a String that represents the chars in Str from "from" (inclusive) to the end of the String
+    str.compareTo(String other) // returns an int based on the relative positions of the two Strings,
+    // if str comes before other alphabetically, the result is negative
+    // if str comes after, the result is positive
+    // if they are the exact same, the result is 0
+    // capital letters are alphabetically earlier than lower-case letters
+    str.equals(other) // returns true/false based on whether or not the two Strings contain the same characters in the same order. Case sensitive.
+    // don't use == to check for String equivalency, or equivalency of any reference type for that matter </pre></code></td></table>
+        <p>
+            toString() is another common method used to print information regarding an object. Java automatically interprets the printing of an object's identifier 
+            as a call to toString(). However, it has to be overloaded inside classes you write, since the base version that exists outputs something you can't really 
+            do anything with in this class.
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    public String toString()
+    {
+        return "This square is " + w + " units wide."
+    }
+    ...
+    System.out.println(squareName.toString()); // is equivalent to:
+    System.out.println(squareName);</pre></code></td></table>
+        <h2>
+            2.8: Wrapper Classes: Integer and Double
+        </h2>
+        <p>
+            Integer and Double are the reference type versions of the primitive types int and double. These are used for "wrapping" primitive values which may be required 
+            depending on what you're doing (most notably with ArrayLists <a href="{% url 'unit' 7 %}">(Unit 7)</a>, which cannot interface with the primitive ints and doubles), hence they are 
+            called wrapper classes. Java does what's called autoboxing, which automatically allows you to treat the objects as their respective primitive type values and 
+            vice versa. The automatic conversion of Integers and Doubles into ints and doubles is called unboxing.
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    Integer x = new Integer(3);
+    Double y = new Double(3.1);
+    int xx = x.intValue(); // turns x into an int
+    int yy = y.doubleValue(); // turns y into a double
+
+    Double z = new Double(4); // this throws an error, you can't convert ints into Double like you can with the primitive types </pre></code></td></table>
+        <p>
+            Also, the aforementioned Integer.MAX_VALUE and Integer.MIN_VALUE are final Integer values in the Integer class.
+        </p>
+        <h2>
+            2.9: Using the Math Class
+        </h2>
+        <p>
+            The Math Class is a static class, which primarily means that its methods can be called via the class name rather than an object (more on them in 
+            <a href="{% url 'unit' 5 %}">Unit 5</a>). It inclues the following methods (also on the Reference Sheet):
+        </p>
+        <table><td><code class="codetable">    
+        <pre>
+    Math.abs(int x) // returns the absolute value of int x
+    Math.abs(double x) // returns the absolute value of double x 
+    Math.pow(double base, double exponent) // returns double base^exponent, even if ints are passed
+    Math.sqrt(double x) // returns square root of x
+    Math.random() // returns a double between 0 inclusive and 1 exclusive.
+
+    // Math.random() can be int casted to generate random ints:
+    // General formula for generating any range from (start, start + range):
+    int randInteger = (int)(Math.random() * (range + 1)) + start
+
+    // range = max - min, start = min
+    int randInteger = (int)(Math. random() * (max - min + 1)) + min</pre></code></td></table>
+        <p>
+            There are plenty of other methods, but those are the only ones you need to know.
+        </p>
+    </body>
+</html>
