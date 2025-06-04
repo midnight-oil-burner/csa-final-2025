@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 7
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <h1>
+            Unit 7: ArrayList
+        </h1>
+        <h2>
+            7.1: Introduction to ArrayList
+        </h2>
+        <p>
+            ArrayLists are basicaly arrays that are resizable; objects can be added and removed from them during runtime. They are mutable and declared as such:
+        </p>
+        <table><td><code class="codetable"><pre>
+    ArrayList&lt;Integer&gt; name = new ArrayList&lt;Integer&gt;(); // creates a new ArrayList that stores Integer objects
+    // ArrayLists can only store reference types, so ArrayLists must be declared as type Integer or Double if you want to store ints or doubles
+    // You could also do:
+    ArrayList name = new ArrayList();
+    // but it's better to declare a type to make debugging easier</pre></code></td></table>
+        <h2>
+            7.2: ArrayList Methods
+        </h2>
+        <table><td><code class="codetable"><pre>
+    // assume all of these are being called on a declared ArrayList
+    .add(obj); // appends input to the end of the list, returns true
+    .add(index, obj); // inserts obj to index, shifts elements upwards and adds 1 to size
+    .get(index); // returns element at index 
+    .size(); // returns number of elements in the list
+    .set(index, obj); // sets element at index to obj; .set() can also return the value that is being replaced simultaneously
+    .remove(index); // removes element at index, shifts elements downwards and subtracts 1 from size; .remove() can also return the value that is being removed simultaneously</pre></code></td></table>
+        <h2>
+            7.3: Traversing ArrayLists
+        </h2>
+        <p>
+            ArrayLists can be traversed much like arrays:
+        </p>
+        <table><td><code class="codetable"><pre>
+    for(int i = 0; i < arrlist.size(); i++) // indices are still from 0 to size()-1
+    {
+        System.out.println(arrlist.get(i));
+    }
+
+    int i = 0;
+    while(i < arrlist.size())
+    {
+        System.out.println(arrlist.get(i));
+        i++;
+    }
+    
+    // when using remove(), take care to decrement the increment variable in order to not skip elements:
+    for(int i = 0; i < arrlist.size(); i++)
+    {
+        if(arrlist.get(i) == 2)
+        {
+            arrlist.remove(i);
+            i--; 
+        }
+    }
+
+    // enhanced for loops also work on ArrayLists
+    for(int x:arrlist)
+    {
+        System.out.println(x);
+    }
+    // do not add or remove elements during an enhanced for loop</pre></code></td></table>
+        <h2>
+            7.5: Searching Algorithms
+        </h2>
+        <p>
+            Searching algorithms are methods that look for a specific value in an array or ArrayList. You don't need to know how to write them, but you do need to 
+            know two and how they work: sequential search and binary search. The former simply loops through each element and compares it with the desired value, 
+            the latter repeatedly splits the array/ArrayList into halves until it reaches the desired value. Both return -1 if the value is not found after all 
+            elements have been checked, else both return the index of the target value.
+        </p>
+        <p>
+            Binary search only works if the array is already sorted, typically in increasing order. When computing the maximum number of comparisons a binary search 
+            of x elements will make, round x to the nearest power of 2 and take the exponent; that exponent is the maximum number. Binary search can also be 
+            implemented recursively (<a href="{% url 'unit' 10 %}">Unit 10</a>).
+        </p>
+        <table><td><code class="codetable"><pre>
+    // sequential search for arrays
+    // for ArrayLists, have an ArrayList as a parameter, use .size() and .get(i)
+    public int sequentialSearch(int[] elements, int target)
+    {
+        for (int i = 0; i < elements.length; i++)
+        {
+            if(elements[i] == target)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // binary search for arrays
+    public int binarySearch(int[] elements, int target)
+    {
+        int left = 0;
+        int right = elements.length - 1;
+        while (left <= right)
+        {
+            int middle = (left + right) / 2;        // middle index
+            if (target < elements[middle])      // if the target is less than the value at middle, shift the right boundary to middle - 1
+            {
+                right = middle - 1;
+            }
+            else if (target > elements[middle])     // if the target is greater, shift the left boundary to middle + 1
+            {
+                left = middle + 1;
+            }
+            else
+            {
+                return middle;      // it's equal, must be the target. return the index
+            }
+        }
+        return -1;      // this means left > right, which indicates the whole array has been searched and target was not found
+    }</pre></code></td></table>
+        <h2>
+            7.6: Sorting Algorithms
+        </h2>
+        <p>
+            These are a bit more painful. Again, you don't need to know how to write them, but you do need to know how they work. Sorting algorithms take an unsorted 
+            array of ArrayList as input and changes said array or ArrayList to be sorted in ascending or descending order. From this unit (there's another algorithm 
+            in Unit 10), you need to know two: selection sort and insertion sort. Note that they have a return type of void and are able to alter arrays because they 
+            are mutable.
+        </p>
+        <p>
+            Selection sort starts at index 0 and loops through the entire array whilst keeping track of the index of the smallest value it's found so far. It then swaps 
+            the value at that index with the value at index 0, then does the same thing for index 1, then index 2, etc. until the entire array is sorted. The order of 
+            the input array does not matter; selection sort will always take the same amount of time and make the same amount of comparisons for an array regardless of 
+            order. It "selects" the smallest value and swaps it with the left boundary of the unsorted part of the array.
+        </p>
+        <table><td><code class="codetable"><pre>
+    // an implementation of selection sort which sorts in ascending order
+    public void selectionSort(int[] elements)
+    {
+        for (int i = 0; i < elements.length - 1; i++)       // outer loop to keep track of left boundary
+        {
+            int minIndex = i;       // left boundary
+            for (int j = i + 1; j < elements.length; j++)       // checks every value after the left boundary
+            {
+                if (elements[j] < elements[minIndex])       // changes minIndex if a smaller value is found at a later index
+                {
+                    minIndex = j;
+                }
+            }
+            int temp = elements[i];     // temporary storage of left boundary
+            elements[i] = elements[minIndex];       // swaps values at left boundary and minIndex
+            elements[minIndex] = temp;      
+        }
+    }</pre></code></td></table>
+        <p>
+            Insertion sort starts at index 1 and moves the value there into its appropriate location in the sorted part (initially just index 0, then 0 and 1, etc.). 
+            It then moves to index 2, etc., shifting values to the right until it finds an appropriate location. Insertion sort is fastest when the input array is 
+            already sorted in the way it would output, and slowest when sorted the opposite way (e.g., if an insertion sort implementation sorts arrays in ascending 
+            order, it works fastest on an array already sorted as such, and works the slowest on an array sorted in descending order.) Essentially, it "selects" the 
+            value at index 1, 2, etc. and sorts it.
+        </p>
+        <table><td><code class="codetable"><pre>
+    // an implementation of insertion sort which sorts in ascending order
+    public void insertionSort(int[] elements)
+    {
+        for (int i = 1; i < elements.length; i++)
+        {
+            int temp = elements[i];     // stores the selected value
+            int possibleIndex = i;      // stores index of selected value
+            while (possibleIndex > 0 && temp < elements[possibleIndex - 1])     // while index is in bounds and the value is smaller than the one to its left:
+            {
+                elements[possibleIndex] = elements[possibleIndex - 1];      // shifts the value to its left to the right by one
+                possibleIndex--;        // looks further to the left
+            }                                   // stops when it either reaches index 0 or the value is bigger than the one to its left
+            elements[possibleIndex] = temp;     // places the value in its correct location
+        }
+    }</pre></code></td></table>
+    </body>
+</html>

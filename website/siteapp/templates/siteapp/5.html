@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 5
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <h1>
+            Unit 5: Writing Classes
+        </h1>
+        <h2>
+            5.1: Anatomy of a Class
+        </h2>
+        <p>
+            Consider the following class for the general structure of a class you'll write:
+        </p>
+        <table><td><code class="codetable"><pre>
+    public class Testing // classes are public
+    {
+        private int age; // instances variables are private--only the class they come from should have direct access to them
+        // reference types can also be instance variables
+
+        public Testing(int input) // constructors have no return type and are named the same as the class
+        {
+            age = input; // stores the input value into the instance variable 
+        }
+
+        // your methods will almost always be public, but can also be private
+        // getters and setters are always public
+        public int getAge()
+        {
+            return age; // a getter/accessor, which returns the value of a private instance variable, allowing it to be accessed outside this class
+        }
+        public int setAge(int input)
+        {
+            age = input; // a setter/mutator, which changes the value of a private instance variable, allowing it to be changed outside this class
+        }
+        public void printAge()
+        {
+            System.out.println(age);
+        }
+    }</pre></code></td></table>
+        <h2>
+            5.2: Constructors
+        </h2>
+        <p>
+            An object's attributes, or instance variables, are set by the constructor. If you don't write a constructor, Java automatically creates a no-argument 
+            constructor and initializes the instance variables to their default values:
+        </p>
+        <table><td><code class="codetable"><pre>
+    // default values
+    int = 0
+    double = 0.0
+    boolean = false
+    reference types (String etc.) = null</pre></code></td></table> 
+        <p>
+            In constructors and methods, be careful when using mutable objects as parameters; the new keyword should be used to separate the parameter from the resulting 
+            object to prevent changes to one affecting both. 
+        </p>
+        <p>
+            Constructors can be overloaded like methods, allowing them to take different parameters to create objects in different ways:
+        </p>
+        <table><td><code class="codetable"><pre>
+    public MyClass(int x)
+    {
+        var = x;
+        str = "";
+    }
+    public MyClass(int x, String y)
+    {
+        var = x;
+        str = new String(y);
+    }
+    // note that the following would not work, as the compiler doesn't know which one to choose:
+    public MyClass(boolean another)
+    {
+        boo = another;
+    }
+    public MyClass(boolean other)
+    {
+        boo = !other;
+    }</pre></code></td></table> 
+        <h2>
+            5.3: Documentation with Comments
+        </h2>
+        <p>
+            Largely irrelevant, but two things to note: a precondition is something that must be true/can assumed to be true prior to the execution of a method; 
+            a postcondition is something that must be true after the execution of a method. If a question on the exam has a precondition, you can assume that 
+            it will always be met and do not need to account for checking whether or not it is fulfilled. Postconditions usually describe the outcome of the method 
+            execution (the value of a variable, etc.).
+        </p>
+        <h2>
+            5.4: Accessor Methods
+        </h2>
+        <p>
+            Also known as getters. They are always public and always non-void. They're used to return the value of an instance variable so it can be accessed without 
+            compromising security. Java returns by value, i.e., it returns a copy of the value expressed in a return statement. If an object reference is being returned, 
+            a copy of the reference is returned and not the object.
+        </p>
+        <table><td><code class="codetable"><pre>
+    // example of a getter
+    public int getVar()
+    {
+        return var;
+    }</pre></code></td></table> 
+        <h2>
+            5.5: Mutator Methods
+        </h2>
+        <p>
+            Also known as setters. They are always void, and are used to alter the value of an instance variable without compromising security.
+        </p>
+        <table><td><code class="codetable"><pre>
+    // example of a setter
+    public void setVar(int newVar)
+    {
+        var = newVar;
+    }</pre></code></td></table>
+        <h2>
+            5.6: Writing Methods
+        </h2>
+        <p>
+            Things to note when writing methods: when an actual parameter is a primitive value, the formal parameter is initialized with a copy of that value, so changing the formal parameter's value 
+            doesn't change the actual parameter's value. 
+        </p> 
+        <p>
+            If you write a method with variables inside the class where the variables are defined, those variables can be changed directly. It's also good practice to not 
+            modify mutable objects inside methods unless it's a required feature of that method. Primitive values cannot be permanently modified in a method, but 
+            mutable reference types can be.
+        </p>
+        <p>
+            Non-static methods are called on objects of a class.
+        </p>
+        <h2>
+            5.7: Static Variables and Methods
+        </h2>
+        <p>
+            Static variables and methods are linked to the class and not objects of that class. They're created by adding the static keyword after public/private and 
+            before the type/return type. Static methods can only access and change other static variables; they cannot change non-static variables. Non-static methods 
+            and variables can access static and non-static methods and variables.
+        </p>
+        <p>
+            Static variables belong to a class, and as such are declared in a class and not in a class's method. All objects of that class share static variables; if 
+            one object changes said variable, it's changed for all objects. 
+        </p>
+        <p>
+            Static methods and static variables are called with the class name rather than an object reference.
+        </p>
+        <table><td><code class="codetable"><pre>
+    private static int objectCount; // a static var
+    
+    public static boolean checkObjCount(int count) // a static method
+    {
+        return count == objectCount;
+    }</pre></code></td></table>
+        <h2>
+            5.8: Scope and Access
+        </h2>
+        <p>
+            A local variable is a method defined within a method or constructor, and is not an instance variable. They can not be public or private, and can only be 
+            used in their respective method/constructor. 
+        </p>
+        <p>
+            In Java there's a concept of scope; a variable exists from the point it is declared to the end of its block of code. For example, a variable declared 
+            inside an if loop can only be used inside that if loop. That variable can also be used in any loops nested into that if loop.
+        </p>
+        <table><td><code class="codetable"><pre>
+    ...
+    {
+        int x = 3; // scope of x starts
+        if(boolean)
+        {
+            int y = 4; // scope of y starts
+        } // scope of y ends
+    } // scope of x ends
+    ...</pre></code></td></table>
+        <p>
+            If there are two variables with the same name, the one with a more specific scope is used, i.e., local variables are acted upon rather than instance 
+            variables if both are named the same.
+        </p>
+        <h2>
+            5.9: this Keyword
+        </h2>
+        <p>
+            Within a non-static method or constructor, the this keyword can be used to reference the current object--that is, the object the method/constructor 
+            is being called upon. this can also be used to pass the current object as a parameter in a method.
+        </p>
+        <table><td><code class="codetable"><pre>
+    private int width;
+
+    public Square(int width)
+    {
+        this.width = width; // this.width refers to the instance variable of the object, and width refers to the parameter (because the scope is more limited!)
+    }</pre></code></td></table>
+    </body>
+</html>

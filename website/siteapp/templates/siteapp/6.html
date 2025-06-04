@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 6
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <h1>
+            Unit 6: Array
+        </h1>
+        <h2>
+            6.1: Array Creation and Access
+        </h2>
+        <p>
+            An array is an object that can store multiple primitve values and objects of the same type. They use square brackets:
+        </p>
+        <table><td><code class="codetable"><pre>
+    // array declaration
+    int[] scores = new int[5]; // creates a new int array of size 5, with each value being set to their default value
+    int[] nums = {6,7,8}; // creates a new int array of size 3, with 6, 7, and 8 being stored
+    // you can also initialize new objects inside arrays:
+    Type[] nums = {new Type(param1, param2), new Type(param3, param4)};
+
+    // array access
+    // arrays use indices like Strings do; 0 refers to the first index, array.length-1 refers to the last
+    // accessing index array.length throws an error
+    array[index] = value
+    scores[0] = 6;
+
+    // array.length returns the length of the array; it's a public variable and not a method, hence the lack of parentheses
+    // the size of an array cannot be changed without another declaration
+
+    // parallel arrays are arrays that store related information across multiple arrays
+    String[] firstNames = {"John", "Greg"};
+    String[] lastNames = {"Greene", "Heffley"};
+
+    // arrays are objects, so passing them as an argument into a method can change the original array</pre></code></td></table>
+        <h2>
+            6.2: Traversing Arrays
+        </h2>
+        <p>
+            Arrays can be traversed with loops, which allows easy accessing and altering:
+        </p>
+        <table><td><code class="codetable"><pre>
+    int[] arr = {1,2,3,4};
+    for(int i = 0; i < arr.length; i++) // traversing with a for loop
+    {
+        System.out.println(arr[i]);
+    }
+
+    int track = 0;
+    while(track < arr.length) // traversing with a while loop
+    {
+        System.out.println(arr[track]);
+        track++;
+    }</pre></code></td></table>
+        <h2>
+            6.3: Enhanced for Loop for Arrays
+        </h2>
+        <p>
+            You can use an enhanced for loop to access all elements of an array easily. However, you cannot alter arrays or access indices with them.
+        </p>
+        <table><td><code class="codetable"><pre>
+    for(type x: array)
+    {
+        ...
+    }
+
+    for(int x:nums) // prints all ints in array nums
+    {
+        System.out.println(x);
+    }</pre></code></td></table>
+    </body>
+</html>

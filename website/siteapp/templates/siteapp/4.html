@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 4
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <h1>
+            Unit 4: Iteration
+        </h1>
+        <h2>
+            4.1: while Loops
+        </h2>
+        <p>
+            while loops execute the code inside them as long as the boolean expression is true:
+        </p>
+        <table><td><code class="codetable"><pre>
+    while(booleanExpression)
+    {
+        // code runs while booleanExpression is true
+    }</pre></code></td></table>
+        <p>
+            In order to prevent infinite loops, an outside variable called a loop variable needs to be created and iterated. The boolean evaluating as false or 
+            a return statement being executed can exit out of a while loop. While loops are generally used if you're not sure how many times it will need to run.
+        </p>
+        <h2>
+            4.2: for Loops
+        </h2>
+        <p>
+            for loops are like while loops, but you intialize and iterate the loop variable within the loop. They're generally used when you know how many times it'll 
+            need to run.
+        </p>
+        <table><td><code class="codetable"><pre>
+    for(initialization, boolean condition, iteration)
+    {
+        // initialization initializes a loop variable, which then iterates as iteration defines and runs the code block while the boolean condition is true
+        // iteration must be a ++ or -- or += or -= etc.
+    }
+    for(int i = 0; i < 2; i++) // starts i at 0, adds 1 to i every loop, runs code while i < 2
+    {
+        System.out.println(i); // prints numbers 0 & 1
+    }
+    // make note that the above stops before i reaches 2. if the boolean was i <= 2, it would run thrice.</pre></code></td></table>
+        <h2>
+            4.3: Developing Algorithms with Strings
+        </h2>
+        <table><td><code class="codetable"><pre>
+    // To loop through an entire string:
+    for(int i = 0; i < str.length(); i++)
+    {
+        System.out.println(str.substring(i, i+1));
+    }
+    // the above stops right before str.length(), so an out of bounds exception doesn't occur
+    // combined with String methods a lot of algorithms can be made, for example:
+    for(int i = str.length()-1; i >= 0; i--)
+    {
+        System.out.println(str.substring(i, i+1));
+    }
+    // prints a String in reverse
+    // there will definitely be a lot of these on the exam</pre></code></td></table>
+        <h2>
+            4.4: Nested Iteration
+        </h2>
+        <p>
+            Loops can be placed inside other loops. Inner loops are executed before outer loops, and the total number of times a nested loop will run can be found by 
+            multiplying the number of times the outer loop will run by the number of times the inner loop will run.
+        </p>
+        <table><td><code class="codetable"><pre>
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; i < 5; j++)
+        {
+            System.out.println(i);
+            System.out.println(j);
+        }
+    }
+    // outer runs 5 times, inner runs 5 times, total is 25 loops</pre></code></td></table>
+    </body>
+</html>
