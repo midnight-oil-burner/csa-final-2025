@@ -1,4 +1,3 @@
 # csa-final-2025
-update this sometime
 
-a little study guide dedicated to the AP Computer Science A course.
+a little study guide dedicated to the pre-2025-2026 AP Computer Science A curriculum created via the Django framework a bunch of HTML.
