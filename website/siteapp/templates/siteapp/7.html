@@ -40,15 +40,26 @@
                 width: 75%;
                 color: white;
             }
+            .left{
+                text-align: left;
+                font-size: 15px;
+                font-family: "segoe ui";
+                padding-left: 0%;
+                padding-right: 0%;
+            }
+            .back{
+                color: black;
+            }
             pre {
                 white-space: pre-wrap;
                 word-wrap: break-word;
             }
         </style>
-    <!--<table><td><code class="codetable"><pre>
+    <!-- <table><td><code class="codetable"><pre>
     </pre></code></td></table> -->
     </head>
     <body>
+        <p class="left"><a class="back" href="{% url 'index' %}"><- Back</a></p>
         <h1>
             Unit 7: ArrayList
         </h1>
@@ -93,7 +104,7 @@
         System.out.println(arrlist.get(i));
         i++;
     }
-    
+
     // when using remove(), take care to decrement the increment variable in order to not skip elements:
     for(int i = 0; i < arrlist.size(); i++)
     {

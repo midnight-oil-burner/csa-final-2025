@@ -40,6 +40,16 @@
                 width: 75%;
                 color: white;
             }
+            .left{
+                text-align: left;
+                font-size: 15px;
+                font-family: "segoe ui";
+                padding-left: 0%;
+                padding-right: 0%;
+            }
+            .back{
+                color: black;
+            }
             pre {
                 white-space: pre-wrap;
                 word-wrap: break-word;
@@ -49,6 +59,7 @@
     </pre></code></td></table> -->
     </head>
     <body>
+        <p class="left"><a class="back" href="{% url 'index' %}"><- Back</a></p>
         <h1>
             Unit 8: 2D Array
         </h1>
@@ -56,7 +67,57 @@
             8.1: 2D Arrays
         </h2>
         <p>
+            2D arrays are arrays of arrays. For this exam, all of the arrays in the array will be the same length.
+        </p>
+        <table><td><code class="codetable"><pre>
+    // initialization
+    int[][] nums = {array1, array2, array3};        // uses array names
+    int[][] digits = {&lcub;1,2,3&rcub;,&lcub;4,5,6&rcub;,&lcub;7,8,9&rcub;};     // uses newly made arrays
+    int[][] integers = new int[2][3];               // creates an empty 2D array with 2 rows and 3 columns 
+    // the first number is the row number (horizontal), the second is the column number (vertical)
 
+    // to modify/access elements
+    int x = digits[0][1];       // accesses 1st array's 2nd element
+    digits[1][2] = 12;          // changes the 2nd array's 3rd element to 12</pre></code></td></table>
+        <p>
+            When traversing through 2D arrays, there are two different ways: row-major order, which loops through the horizontal rows/individual arrays, and column-major 
+            order, which loops through the vertical columns. This exam generally uses row-major order.
+        </p>
+        <h2>
+            8.2: Traversing 2D Arrays
+        </h2>
+        <p>
+            2D arrays can be traversed with nested loops:
+        </p>
+        <table><td><code class="codetable"><pre>
+    // row-major order
+    for(int row = 0; row < arr.length; row++) 
+    {
+        for(int col = 0; col < arr[0].length; col++) 
+        {
+            System.out.println(arr[row][col]);
+        }
+    }
+    
+    // column-major order
+    for(int col = 0; col < arr.[0].length; col++)
+    {
+        for(int row = 0; row < arr.length; row++)
+        {
+            System.out.println(arr[row][col]);
+        }
+    }
+
+    // enhanced for loops can also be used for access:
+    for(int[] singleArray : arr)
+    {
+        for(int singleElement : singleArray)
+        {
+            System.out.println(singleElement);
+        }
+    }</pre></code></td></table>
+        <p>
+            Array algorithms can also be rewritten for 2D arrays. Sequential searching algorithms have to traverse the array as shown above.
         </p>
     </body>
 </html>

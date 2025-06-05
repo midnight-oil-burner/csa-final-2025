@@ -40,12 +40,48 @@
                 width: 75%;
                 color: white;
             }
+            .left{
+                text-align: left;
+                font-size: 15px;
+                font-family: "segoe ui";
+                padding-left: 0%;
+                padding-right: 0%;
+            }
+            .back{
+                color: black;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+            .grid {
+                display: block;
+                width: 50%;
+                float:
+                margin: auto;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
         </style>
     </head>
     <!-- <table><td><code class="codetable">    
     <pre>
-    </pre></code></td></table>-->
+    </pre></code></td></table> -->
     <body>
+        <div class="grid">
+                <div>Units:</div> 
+                <div><a href="{% url 'unit' 1 %}">Unit 1</a></div>
+                <div><a href="{% url 'unit' 2 %}">Unit 2</a></div>
+                <div><a href="{% url 'unit' 3 %}">Unit 3</a></div>
+                <div><a href="{% url 'unit' 4 %}">Unit 4</a></div>
+                <div><a href="{% url 'unit' 5 %}">Unit 5</a></div>
+                <div><a href="{% url 'unit' 6 %}">Unit 6</a></div>
+                <div><a href="{% url 'unit' 7 %}">Unit 7</a></div>
+                <div><a href="{% url 'unit' 8 %}">Unit 8</a></div>
+                <div><a href="{% url 'unit' 9 %}">Unit 9</a></div>
+                <div><a href="{% url 'unit' 10 %}">Unit 10</a></div>
+        </div>
+        <p class="left"><a class="back" href="{% url 'index' %}"><- Back</a></p>
         <h1>
             Unit 1: Primitive Types
         </h1>

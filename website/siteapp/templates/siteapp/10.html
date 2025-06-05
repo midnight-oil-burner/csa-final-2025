@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 10
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            .left{
+                text-align: left;
+                font-size: 15px;
+                font-family: "segoe ui";
+                padding-left: 0%;
+                padding-right: 0%;
+            }
+            .back{
+                color: black;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <p class="left"><a class="back" href="{% url 'index' %}"><- Back</a></p>
+        <h1>
+            Unit 10: Recursion
+        </h1>
+        <h2>
+            10.1: Recursion
+        </h2>
+        <p>
+            A recursive method is a method that calls itself. In order to stop a method from calling itself infinitely, it needs what's called a base case, which is 
+            when the method stops. This is generally done through an if statement:
+        </p>
+        <table><td><code class="codetable"><pre>
+    // a method that when given a positive integer n returns n+(n-1)+(n-2)+(n-3)+...
+    public int sum(int n)
+    {
+        if(n<=0)            // base case: if n is 0 or negative, stop and return 0
+            return 0;
+        return n+sum(n-1);  // if 0 isn't returned, then return n and call itself with n-1
+    }</pre></code></td></table>
+        <p>
+            When tracing a recursive method, generally you have to go through all the calls until the base case is reached. Recusrion can also be used to traverse 
+            Strings, arrays, and ArrayLists just like a loop, but you don't need to know how to write code for that.
+        </p>
+        <h2>
+            10.2: Recursive Searching and Sorting
+        </h2>
+        <p>
+            Binary search from <a href="{% url 'unit' 7 %}">Unit 7</a> can be implemented recursively:
+        </p>
+        <table><td><code class="codetable"><pre>
+    public int recursiveBinarySearch(int[] array, int start, int end, int target)
+    {
+        int middle = (start + end) / 2;
+        if (target == array[middle])        // base case: check middle element
+        {
+            return middle;
+        }
+        if (target < array[middle])         // recursive call: search start to middle
+        {
+            return recursiveBinarySearch(array, start, middle - 1, target);
+        }
+        if (target > array[middle])         // recursive call: search middle to end
+        {
+            return recursiveBinarySearch(array, middle + 1, end, target);
+        }
+        return -1;                          // returns -1 and thus stops searching in that half
+    }</pre></code></td></table>
+        <p>
+            There's also a recursive sorting method you need to know called merge sort. It's usually faster than both selection and insertion sort because it halves 
+            the problem every recursive call. It's pretty complicated relatively speaking, but you only really need to know how it works. It continuously 
+            splits the input array into two halves until there are only arrays of size 1 left, then starts joining them together and sorting them in pairs, then fours, 
+            etc. simultaneously.
+        </p>
+        <table><td><code class="codetable"><pre>
+    // simple visualization of merge sort
+    int[] example = {12, 5, 24, 26, 99, 1, 2};
+    /*
+    first split 
+    {12, 5, 24, 26}      {99, 1, 2}
+    second split
+    {12, 5}   {24, 26}   {99, 1}   {2}
+    third split
+    {12}  {5}  {24}  {26}  {99}  {1}  {2}
+
+    first merge & sort
+    {5, 12}   {24, 26}   {1, 99}   {2}
+    second merge & sort
+    {5, 12, 24, 26}      {1, 2, 99}
+    third merge & sort 
+    {1, 2, 5, 12, 24, 26, 99}   <- sorted array!
+    */</pre></code></td></table>
+    </body>
+</html>

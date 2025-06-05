@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Unit 9
+        </title>
+        <style>
+            body{
+                background: rgba(50, 200, 150, 0.7);
+            }
+            table, td{
+                border: 2px, solid, black;
+                width: 75%;
+                border-collapse: collapse;
+                margin-left: 2%;
+                background-color: rgb(78, 78, 78);
+                padding: 1%;
+            }
+            h1{
+                text-align: left;
+                font-family: "segoe ui";
+                font-size: 30px;
+                padding-left: 1%;
+            }
+            h2{
+                text-align: left;
+                padding-left: 2%;
+                font-size: 25px;
+                font-family: "segoe ui";
+            }
+            p{
+                text-align: left;
+                padding-left: 2%;
+                padding-right: 2%;
+                font-size: 15px;
+                font-family: "segoe ui";
+            }
+            .codetable{
+                background-color: rgb(78, 78, 78);
+                width: 75%;
+                color: white;
+            }
+            .left{
+                text-align: left;
+                font-size: 15px;
+                font-family: "segoe ui";
+                padding-left: 0%;
+                padding-right: 0%;
+            }
+            .back{
+                color: black;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        </style>
+    <!--<table><td><code class="codetable"><pre>
+    </pre></code></td></table> -->
+    </head>
+    <body>
+        <p class="left"><a class="back" href="{% url 'index' %}"><- Back</a></p>
+        <h1>
+            Unit 9: Inheritance
+        </h1>
+        <h2>
+            (Obsolete after 2024-2025 school year)
+        </h2>
+        <p>
+            Note that the exam will only have MCQ for Unit 9 and Unit 10 and no FRQ.
+        </p>
+        <h2>
+            9.1: Creating Superclasses and Subclasses
+        </h2>
+        <p>
+            A superclass, or parent class, is a class with a bunch of instance variables and methods that can be inherited by subclasses, or child classes. Subclasses 
+            inherit the public  instance variables and methods of superclasses, though they usually also include their own to set themselves apart. A subclass has an "is-a" 
+            relationship with the superclass. Subclasses are created with the extends keyword:
+        </p>
+        <table><td><code class="codetable"><pre>
+    class Human
+    {
+        ...
+    }
+    class Student extends Human         // a Student "is-a" Human
+    {
+        ...
+    }</pre></code></td></table>
+        <p>
+            Subclasses can extend subclasses, and thus some subclass have numerous superclasses, but a class can only extend one superclass at a time. Subclasses 
+            are definitely an example of its superclass, but said superclass is not necessarily an example of its subclass (e.g., all Students are Humans, but not all 
+            Humans are Students.)
+        </p>
+        <h2>
+            9.2: Writing Constructors for Subclasses
+        </h2>
+        <p>
+            Constructors are not inherited, nor is anything private. However, the subclass likely needs access to the instance variables, so the super keyword is used. 
+            The constructor from a superclass can be called by the subclass by using the super keyword in ONLY the first line of the subclass's constructor:
+        </p>
+        <table><td><code class="codetable"><pre>
+    class Human
+    {
+        private int age;
+        private String name;
+
+        public Human(int age, String name)
+        {
+            this.age = age;
+            this.name = name;
+        }
+        public Human()
+        {
+            this.age = 0;
+            this.name = "Doe";
+        }
+    }
+
+    class Student extends Human
+    {
+        private int grade;
+
+        public Student(int age, String name, int grade)
+        {
+            super(age, name);       // calls Human's constructor with the given parameters and sets the instance variables to those values
+            this.grade = grade;
+        }
+    }</pre></code></td></table>
+        <p>
+            The number of parameters passed should correspond with the number of parameters of a constructor in the superclass. If a subclass's constructor does not 
+            use super to call its superclass's constructor, Java automatically calls the superclass's no-argument constructor. 
+        </p>
+        <p>
+            If no class is extended, the Object class is extended by default, and the Object class is a parent class of any class you create.
+        </p>
+        <h2>
+            9.3: Overriding Methods
+        </h2>
+        <p>
+            Sometimes inherited methods need to be altered. This is called method overriding. This is different from overloading in that overriding occurs across different 
+            classes and the method headers are the exact same; overloading happens in a single class and the method headers are different.
+        </p>
+        <p>
+            If an overridden method has a super call to a method that exists in both a subclass and its superclass, it will execute the method in the subclass. When a 
+            method is called, the method must exist in the class it was called from or in a superclass.
+        </p>
+        <h2>
+            9.4: super Keyword
+        </h2>
+        <p>
+            super can be used to call both constructors and methods:
+        </p>
+        <table><td><code class="codetable"><pre>
+    // in a subclass
+    super.methodName();
+    super.methodName(param1, param2); // number of parameters should correspond w/ the original method's params</pre></code></td></table>
+        <h2>
+            9.5: Creating References Using Inheritance Hierarchies
+        </h2>
+        <p>
+            Because of the "is-a" relationship, all of a subclass's objects count as instances of its superclass. This is called polymorphism. Thus an array of superclass 
+            objects can include objects from the subclass, and a subclass's objects can be passed as parameters requiring a superclass's object.
+        </p>
+        <h2>
+            9.6: Polymorphism
+        </h2>
+        <p>
+            You're lucky this unit is about to be deprecated because polymorphism MCQs are kind of annoying. In Java, an object variable has both a compile-time/declared 
+            type and a run-time/instantiated type. The actual object uses the run-time type, but during compilation Java only cares about the compile-time type:
+        </p>
+        <table><td><code class="codetable"><pre>
+    // a few different ways of visualizing this
+    superclass objectName = new subclass(args);
+    declaredClass objectName = new instantiatedClass(args);
+    compileTime objectName = new runTime(args);
+
+    // you cannot declare an object to be of type subclass then instantiate it as type superclass:
+    subclass objectName = new superclass(args);
+    // since an instance of superclass is not necessarily an instance of subclass</pre></code></td></table>
+        <p>
+            When compiling, the compiler only cares about the declared class. For example, in the above, if the instantiatedClass is a subclass of declaredClass, 
+            and an object is declared as declaredClass, calling a method exclusive to the instantiatedClass on that object will result in a compilation error, calling a method in 
+            declaredClass or one of its superclasses will not. If the code does compile and a called method is not found in declaredClass, it will look in declaredClass's superclass, 
+            then in the superclass of that superclass, etc. until it finds it.
+        </p>
+        <p>
+            If another method is executed during the execution of a method above the originating class, the compiler looks for the other method in the originaing class first 
+            before moving up the hierarchy.
+        </p>
+        <h2>
+            9.7: Object Superclass 
+        </h2>
+        <p>
+            The Object class is the superclass of all other classes. It includes the toString() and equals(obj) method, which are often overridden in subclasses. null 
+            is not an instance of any class.
+        </p>
+    </body>
+</html>
